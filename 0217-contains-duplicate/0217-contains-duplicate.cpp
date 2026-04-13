@@ -1,14 +1,39 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int> s;
+        unordered_map<int,int>freq;
         for(auto it:nums){
-            if(s.count(it)) return true;
-            s.insert(it);
+            freq[it]++;
+        }
+        for(auto it:freq){
+            if(it.second != 1){
+                return true;
+            }
         }
         return false;
+
     }
 };
+
+
+
+
+
+
+
+
+
+// class Solution {
+// public:
+//     bool containsDuplicate(vector<int>& nums) {
+//         unordered_set<int> s;
+//         for(auto it:nums){
+//             if(s.count(it)) return true;
+//             s.insert(it);
+//         }
+//         return false;
+//     }
+// };
 
 
 
