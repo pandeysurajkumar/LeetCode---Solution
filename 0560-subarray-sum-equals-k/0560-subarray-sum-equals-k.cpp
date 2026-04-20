@@ -1,27 +1,22 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int count = 0;        // ✅ changed from maxLen
-        long long sum = 0;
-
-        unordered_map<long long, int> prefixsum;
-
-        prefixsum[0] = 1;     // ✅ IMPORTANT (handle sum == k)
-
-        for(int i = 0; i < nums.size(); i++) {
-            sum += nums[i];
-
-            long long rem = sum - k;
-
-            // ✅ check how many times rem appeared
-            if(prefixsum.find(rem) != prefixsum.end()) {
-                count += prefixsum[rem];
+        int left = 0;
+        int right = 0;
+        int n = nums.size();
+        int sum = nums[0];
+        int count=0;
+        while(right<n){
+            while(left<=right && sum >k){
+                sum -= nums[left];
+                left++;
             }
-
-            // ✅ store frequency (not index)
-            prefixsum[sum]++;
+            if(sum == k){
+                count++;
+            }
+            right++;
+            if(right<n) sum += nums[right];
         }
-
         return count;
     }
 };
