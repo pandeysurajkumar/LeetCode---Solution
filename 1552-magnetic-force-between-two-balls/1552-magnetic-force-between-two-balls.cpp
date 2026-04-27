@@ -22,12 +22,12 @@ public:
     int maxDistance(vector<int>& position, int m) {
         sort(position.begin(),position.end());
         int s = 0;
-        int maxi = INT_MIN;
-        for(int i=0;i<position.size();i++){
-            maxi = max(maxi,position[i]);
-        }
+        // int maxi = INT_MIN;
+        // for(int i=0;i<position.size();i++){
+        //     maxi = max(maxi,position[i]);
+        // }
 
-        long long e = maxi;
+        int e = position.back()-position.front();
         int ans = -1;
 
         while(s<=e){
