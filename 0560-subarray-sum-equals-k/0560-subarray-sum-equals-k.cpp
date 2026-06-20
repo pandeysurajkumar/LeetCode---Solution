@@ -8,10 +8,8 @@ public:
         for(auto it:nums)
         {
             sum += it;
-            if(mp.find(sum-k) != mp.end())
-            {
-                count = count+mp[sum-k];
-            }
+            int need = sum -k;
+            count += mp[need];
             mp[sum]++;
         }
         return count;
