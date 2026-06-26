@@ -14,6 +14,12 @@ private:
             }
         }
         int target = grid[r][c]+grid[r][c+1]+grid[r][c+2];
+
+        //first diogal 
+        if(grid[r][c]+grid[r+1][c+1]+grid[r+2][c+2] != target) return false;
+        // second diagonal
+        if(grid[r][c+2]+grid[r+1][c+1]+grid[r+2][c] != target) return false;
+
         //check for row
         for(int i=0;i<3;i++)
         {
@@ -34,10 +40,7 @@ private:
             }
             if(sum != target) return false;
         }
-        //first diogal 
-        if(grid[r][c]+grid[r+1][c+1]+grid[r+2][c+2] != target) return false;
-        // second diagonal
-        if(grid[r][c+2]+grid[r+1][c+1]+grid[r+2][c] != target) return false;
+
         return true;
     }
 
@@ -50,6 +53,8 @@ public:
         {
             for(int j=0;j<=m-3;j++)
             {
+                if (grid[i + 1][j + 1] != 5)
+                    continue;
                 if(ismagic(grid,i,j))
                 {
                     count++;
