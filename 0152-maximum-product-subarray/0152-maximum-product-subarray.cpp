@@ -1,18 +1,17 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int maxpod = nums[0];
-        int minpod = nums[0];
-        int ans = nums[0];
-        for(int i=1;i<nums.size();i++)
+        int ans = INT_MIN;
+        int preff = 1;
+        int suff = 1;
+        int n = nums.size();
+        for(int i=0;i<n;i++)
         {
-            if(nums[i]<0)
-            {
-                swap(maxpod,minpod);
-            }
-            maxpod = max(nums[i],maxpod*nums[i]);
-            minpod = min(nums[i],minpod*nums[i]);
-            ans = max(maxpod,ans);
+            if(preff == 0) preff = 1;
+            if(suff == 0) suff = 1;
+            preff = preff * nums[i];
+            suff = suff * nums[n-i-1];
+            ans = max(ans,max(preff,suff));
         }
         return ans;
     }
