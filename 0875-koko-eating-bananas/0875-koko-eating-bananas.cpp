@@ -6,7 +6,8 @@ public:
         long long hours = 0;
 
         for (int pile : piles) {
-            hours += (pile + speed - 1) / speed;
+            // hours += (pile + speed - 1) / speed;
+            hours = hours + ceil((double)pile/speed);
         }
 
         return hours <= h;
