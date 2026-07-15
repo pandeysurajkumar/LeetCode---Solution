@@ -1,18 +1,25 @@
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        vector<int> count(101, 0);
+
+        // Count frequency
+        for (int num : nums) {
+            count[num]++;
+        }
+
+        // Prefix sum
+        for (int i = 1; i <= 100; i++) {
+            count[i] += count[i - 1];
+        }
+
         vector<int> ans;
 
-        for(int i = 0; i < nums.size(); i++) {
-            int count = 0;
-
-            for(int j = 0; j < nums.size(); j++) {
-                if(nums[j] < nums[i]) {
-                    count++;
-                }
-            }
-
-            ans.push_back(count);
+        for (int num : nums) {
+            if (num == 0)
+                ans.push_back(0);
+            else
+                ans.push_back(count[num - 1]);
         }
 
         return ans;
