@@ -34,7 +34,7 @@ public:
                         if(ch == original)
                             continue;
                         word[i] = ch;
-                        if(endSet.count(word))
+                        if(endSet.find(word) != endSet.end())
                         {
                             return level+1;
                         }
