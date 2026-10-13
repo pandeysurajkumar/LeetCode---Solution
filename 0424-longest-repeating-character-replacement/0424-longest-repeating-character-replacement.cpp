@@ -9,15 +9,12 @@ public:
         while(r<s.size())
         {
             maxf = max(maxf,++hash[s[r]-'A']);
-            if((r-l+1)-maxf > k)
+            while((r-l+1)-maxf > k)
             {
                 hash[s[l]-'A']--;
                 l++;
             }
-            if((r-l+1)-maxf <= k)
-            {
                 maxl = max(maxl,(r-l+1));
-            }
             r++;
         }
         return maxl;
