@@ -8,7 +8,7 @@ class Solution {
         while(j<n)
         {
             if(nums[j]==0) count++;
-            while(count>k)
+            if(count>k)
             {
                 if(nums[i]==0)count--;
                 i++;
